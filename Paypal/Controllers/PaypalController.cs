@@ -6,6 +6,7 @@ using System.Net;
 using System.Text;
 using System.Web;
 using System.Web.Mvc;
+using Paypal.Models;
 
 namespace Paypal.Controllers
 {
@@ -52,7 +53,7 @@ namespace Paypal.Controllers
                 if (AmountPaidIsValid(order, amountPaid))
                 {
 
-                    Address add = new Address();
+                    var add = new Address();
                     add.FirstName = Request["first_name"];
                     add.LastName = Request["last_name"];
                     add.Email = Request["payer_email"];
@@ -182,7 +183,7 @@ namespace Paypal.Controllers
             byte[] param = Request.BinaryRead(Request.ContentLength);
             string strRequest = Encoding.ASCII.GetString(param);
 
-            StringBuilder sb = new StringBuilder();
+            var sb = new StringBuilder();
             sb.Append(strRequest);
 
             foreach (string key in formVals.Keys)
