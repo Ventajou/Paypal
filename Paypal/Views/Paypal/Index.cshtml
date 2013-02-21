@@ -1,0 +1,38 @@
+﻿<h2>test</h2>
+
+@using(Html.BeginForm("PostToPaypal", "Home"))
+{
+    <div>
+        <table>
+            <tr>
+                <td>
+                    Item name:
+                </td>
+                <td>
+                    <input type="text" name="item" value="book" readonly="readonly"/>
+                </td>
+
+            </tr>
+            
+            <tr>
+                <td>
+                    Price:
+                </td>
+                <td>
+                    <input type="text" name="amount" value="200" readonly="readonly"/>
+                </td>
+
+            </tr>
+            
+              <tr>
+                <td>
+                  
+                </td>
+                <td>
+                    <input type="submit" name="btnsubmit" value="Pay with Paypal" />
+                </td>
+
+            </tr>
+        </table>
+    </div>
+}
