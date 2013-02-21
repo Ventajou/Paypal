@@ -47,22 +47,24 @@ namespace Paypal.Controllers
                 Decimal.TryParse(sAmountPaid, out amountPaid);
 
                 //Order order = _orderService.GetOrder(new Guid(orderID));
-                Order order = null;
+                Order order = new Order(){ID=orderID};
                 //check the amount paid
 
                 if (AmountPaidIsValid(order, amountPaid))
                 {
 
-                    var add = new Address();
-                    add.FirstName = Request["first_name"];
-                    add.LastName = Request["last_name"];
-                    add.Email = Request["payer_email"];
-                    add.Street1 = Request["address_street"];
-                    add.City = Request["address_city"];
-                    add.StateOrProvince = Request["address_state"];
-                    add.Country = Request["address_country"];
-                    add.Zip = Request["address_zip"];
-                    add.UserName = order.UserName;
+                    var add = new Address
+                                  {
+                                      FirstName = Request["first_name"],
+                                      LastName = Request["last_name"],
+                                      Email = Request["payer_email"],
+                                      Street1 = Request["address_street"],
+                                      City = Request["address_city"],
+                                      StateOrProvince = Request["address_state"],
+                                      Country = Request["address_country"],
+                                      Zip = Request["address_zip"],
+                                      UserName = order.UserName
+                                  };
 
 
                     //process it
