@@ -12,6 +12,10 @@ namespace Paypal.Controllers
 {
     public class PaypalController : Controller
     {
+        public PaypalController()
+        {
+            
+        }
         //
         // GET: /Paypal/
 
@@ -23,6 +27,11 @@ namespace Paypal.Controllers
         public ActionResult Return()
         {
             return View();
+        }
+
+        public ActionResult Success(Order order)
+        {
+            return View(order);
         }
 
         public ActionResult IPN()
@@ -67,17 +76,18 @@ namespace Paypal.Controllers
                                   };
 
 
-                    //process it
+                    //process itPAY
                     try
                     {
                         //_pipeline.AcceptPalPayment(order, transactionID, amountPaid);
                         //_logger.Info("IPN Order successfully transacted: " + orderID);
-                        return RedirectToAction("Receipt", "Order", new { id = order.ID });
+                       //return RedirectToAction("Success", "Paypal", new { order = order});
+                        return View("Return");
                     }
                     catch
                     {
                         //HandleProcessingError(order, x);
-                        return View();
+                        return View("Return");
                     }
                 }
                 else
@@ -88,7 +98,7 @@ namespace Paypal.Controllers
 
 
 
-            return View();
+            return View("Return");
         }
 
         /// <summary>

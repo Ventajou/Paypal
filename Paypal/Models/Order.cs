@@ -1,6 +1,6 @@
 ﻿namespace Paypal.Models
 {
-    class Order
+    public class Order
     {
         public string UserName { get; set; }
 
