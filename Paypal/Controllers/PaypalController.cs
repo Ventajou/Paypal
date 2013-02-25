@@ -15,7 +15,7 @@ namespace Paypal.Controllers
     {
         public PaypalController()
         {
-            
+
         }
         //
         // GET: /Paypal/
@@ -51,9 +51,19 @@ namespace Paypal.Controllers
             paypal.notify_url = ConfigurationManager.AppSettings["NotifyURL"];
             paypal.currency_code = ConfigurationManager.AppSettings["CurrencyCode"];
 
-            paypal.item_name = item;
+            paypal.PaypalItems.Add(new PaypalItem()
+                                       {
+                                           Amount = amountval,
+                                           Name = item,
+                                           Quantity = 1
+                                       });
 
-            paypal.amount = amountval;
+            paypal.PaypalItems.Add(new PaypalItem()
+                                        {
+                                            Amount = "12",
+                                            Name = "test",
+                                            Quantity = 1
+                                        });
 
             return View(paypal);
 
@@ -81,8 +91,8 @@ namespace Paypal.Controllers
                 Decimal.TryParse(sAmountPaid, out amountPaid);
 
                 //Order order = _orderService.GetOrder(new Guid(orderID));
-                Order order = new Order(){ID=orderID};
-                //check the amount paid
+                Order order = new Order() { ID = orderID };
+                //check the Amount paid
 
                 if (AmountPaidIsValid(order, amountPaid))
                 {
@@ -106,7 +116,7 @@ namespace Paypal.Controllers
                     {
                         //_pipeline.AcceptPalPayment(order, transactionID, amountPaid);
                         //_logger.Info("IPN Order successfully transacted: " + orderID);
-                       //return RedirectToAction("Success", "Paypal", new { order = order});
+                        //return RedirectToAction("Success", "Paypal", new { order = order});
                         return View("Return");
                     }
                     catch
@@ -188,7 +198,7 @@ namespace Paypal.Controllers
         //        }
         //        else
         //        {
-        //            //Payment amount is off
+        //            //Payment Amount is off
         //            //this can happen if you have a Gift cert at PayPal
         //            //be careful of this!
         //            //HandleProcessingError(order, new InvalidOperationException("Amount paid (" + amountPaid.ToString("C") + ") was below the order total"));
@@ -258,7 +268,7 @@ namespace Paypal.Controllers
             {
                 if (order.Total > amountPaid)
                 {
-                    //_logger.Warn("Invalid order amount to PDT/IPN: " + order.ID + "; Actual: " + amountPaid.ToString("C") + "; Should be: " + order.Total.ToString("C") + "user IP is " + Request.UserHostAddress);
+                    //_logger.Warn("Invalid order Amount to PDT/IPN: " + order.ID + "; Actual: " + amountPaid.ToString("C") + "; Should be: " + order.Total.ToString("C") + "user IP is " + Request.UserHostAddress);
                     result = false;
                 }
             }

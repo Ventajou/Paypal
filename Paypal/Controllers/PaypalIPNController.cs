@@ -38,7 +38,7 @@
 
 //                //Order order = _orderService.GetOrder(new Guid(orderID));
 //                Order order = null;
-//                //check the amount paid
+//                //check the Amount paid
 
 //                if (AmountPaidIsValid(order, amountPaid))
 //                {
@@ -141,7 +141,7 @@
 //                }
 //                else
 //                {
-//                    //Payment amount is off
+//                    //Payment Amount is off
 //                    //this can happen if you have a Gift cert at PayPal
 //                    //be careful of this!
 //                    //HandleProcessingError(order, new InvalidOperationException("Amount paid (" + amountPaid.ToString("C") + ") was below the order total"));
@@ -211,7 +211,7 @@
 //            {
 //                if (order.Total > amountPaid)
 //                {
-//                    //_logger.Warn("Invalid order amount to PDT/IPN: " + order.ID + "; Actual: " + amountPaid.ToString("C") + "; Should be: " + order.Total.ToString("C") + "user IP is " + Request.UserHostAddress);
+//                    //_logger.Warn("Invalid order Amount to PDT/IPN: " + order.ID + "; Actual: " + amountPaid.ToString("C") + "; Should be: " + order.Total.ToString("C") + "user IP is " + Request.UserHostAddress);
 //                    result = false;
 //                }
 //            }
