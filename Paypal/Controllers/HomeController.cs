@@ -13,7 +13,7 @@ namespace Paypal.Controllers
         {
             ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
 
-            return View("Paypal");
+            return RedirectToAction("Index", "Paypal");// View("Paypal");
         }
 
         public ActionResult About()
@@ -30,27 +30,6 @@ namespace Paypal.Controllers
             return View();
         }
 
-        [HttpPost]
-        public ActionResult PostToPaypal(string item, string amount)
-        {
-            var paypal = new Models.Paypal();
-            paypal.cmd = "_xclick";
-            paypal.business = ConfigurationManager.AppSettings["BusinessAccountKey"];
-
-            var useSandbox = Convert.ToBoolean(ConfigurationManager.AppSettings["UseSandBox"]);
-            ViewBag.actionUrl = useSandbox ? "https://www.sandbox.paypal.com/cgi-bin/webscr" : "https://www.paypal.com/cgi-bin/webscr";
-
-            paypal.cancel_return = ConfigurationManager.AppSettings["CancelURL"];
-            paypal.@return = ConfigurationManager.AppSettings["ReturnURL"];
-            paypal.notify_url = ConfigurationManager.AppSettings["NotifyURL"];
-            paypal.currency_code = ConfigurationManager.AppSettings["CurrencyCode"];
-
-            paypal.item_name = item;
-
-            paypal.amount = amount;
-
-            return View(paypal);
-
-        }
+      
     }
 }

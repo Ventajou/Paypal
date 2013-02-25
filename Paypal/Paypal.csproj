@@ -294,10 +294,7 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Home\Paypal.cshtml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Views\Home\PostToPaypal.cshtml" />
+    <Content Include="Views\Paypal\PostToPaypal.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Paypal\Index.cshtml" />
@@ -322,7 +319,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>54983</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
